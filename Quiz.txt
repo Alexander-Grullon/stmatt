@@ -1,0 +1,69 @@
+import random
+
+def run_quiz():
+    questions = [
+        {
+            "question": "What Numbers are  NOT Prime?",
+            "correct": "91",
+            "wrong": ["87", "5", "23", "29", "13", "17"]
+        },
+        {
+            "question": "What is THE song of the year?",
+            "correct": "Blacked out Like a Phantom",
+            "wrong": ["67 by skrilla", "hyperdebaiter", "Dark Thoughts", "Runaway", "Nokia", "41"]
+        },
+        {
+            "question": "Which Meme won Meme Madness?",
+            "correct": "67",
+            "wrong": ["41", "Italian Brainrot", "Bird Game 3", "My Mom's Kinda Homeless", "89", "Tuff Baby"]
+        },
+    {
+
+            "question": "Who is the best Math Teacher EVER?",
+            "correct": "Mr Min",
+            "wrong": ["Mr. S", "Organic Chemistry Tutor", "ChatGPT", "Alex G", "Gemini", "CoPilot"] 
+        },
+    {
+    
+     "question": "What is the BEST game ever?",
+            "correct": "Bird Game 3",
+            "wrong": ["Fortnite", "Apex Legends", "Call of Duty", "Mustard Mango Simulator", "Expidition 33", "BloxTales"]  
+        },
+    {
+    
+    "question": "Where is Logan Born?",
+            "correct": "Kirk Michael",
+            "wrong": ["Michael Land", "Gogolandia", "Kenya", "Kirkland", "Edison NJ", "Loganland"]  
+        }
+    ]
+    
+    score = 0
+
+    for q in questions:
+        answers = [q["correct"]] + q["wrong"]
+        random.shuffle(answers)
+
+        print("\n" + q["question"])
+        for i, answer in enumerate(answers, start=1):
+            print(f"{i}. {answer}")
+
+        while True:
+            try:
+                choice = int(input("Choose 1, 2, 3, 4, 5, 6, or 7: "))
+                if 1 <= choice <= 7:
+                    break
+                else:
+                    print("Please enter 1, 2, 3, 4, 5, 6, or 7.")
+            except ValueError:
+                print("Please enter a number.")
+
+        if answers[choice - 1] == q["correct"]:
+            print("✅ Correct!")
+            score += 1
+        else:
+            print(f"❌ Wrong! Correct answer: {q['correct']}")
+
+    print(f"\n🎉 Quiz finished! Your score: {score}/6")
+
+
+run_quiz()
